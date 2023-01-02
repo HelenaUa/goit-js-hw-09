@@ -87,11 +87,7 @@ function onClick(event) {
 };
 
 function addLeadingZero(timeComponents) {
-    if (timeComponents < 99) {
-        timerDays.textContent = String(timeComponents.days).padStart(2, '0');
-    } else {
-        timerDays.textContent = timeComponents.days;
-    };
+    timerDays.textContent = String(timeComponents.days).padStart(2, '0');
     timerHours.textContent = String(timeComponents.hours).padStart(2, '0');
     timerMinutes.textContent = String(timeComponents.minutes).padStart(2, '0');
     timerSeconds.textContent = String(timeComponents.seconds).padStart(2, '0');
