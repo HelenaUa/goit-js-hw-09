@@ -17,7 +17,7 @@ form.addEventListener("submit", onSubmit);
 
 function onSubmit(event) {
   event.preventDefault();
-
+  
   const formElements = event.target.elements;
   console.log(formElements);
 
@@ -29,16 +29,15 @@ function onSubmit(event) {
   console.log(arrayData);
 
   for (let i = 1; i <= arrayData.amount; i += 1) {
-    createPromise(i, arrayData.delay)
-    .then(({ position, delay }) => {
+    createPromise(i, arrayData.delay).then(({ position, delay }) => {
     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-  })
-  .catch(({ position, delay }) => {
+  }).catch(({ position, delay }) => {
     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
   });
     
     arrayData.delay += arrayData.step;
-    console.log("delay", arrayData.delay);
+    // console.log("delay", arrayData.delay);
+    form.reset();
   }
 };
 
@@ -46,6 +45,7 @@ function onSubmit(event) {
 function createPromise(position, delay) {
   const promise = new Promise((res, rej) => {
     const shouldResolve = Math.random() > 0.3;
+    // console.log('shouldResolve',shouldResolve);
     setTimeout(() => { 
        if (shouldResolve) {
          res({ position, delay }); // Fulfill 
@@ -53,14 +53,11 @@ function createPromise(position, delay) {
     rej({position, delay}) // Reject
   }
     })
-    console.log(promise);
-    
+
     }, delay)
-  
+    // console.log(promise);
   return promise;
 };
-
-
 
 
 
