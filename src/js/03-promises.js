@@ -46,15 +46,15 @@ function createPromise(position, delay) {
   const promise = new Promise((res, rej) => {
     const shouldResolve = Math.random() > 0.3;
     // console.log('shouldResolve',shouldResolve);
-    setTimeout(() => { 
-       if (shouldResolve) {
-         res({ position, delay }); // Fulfill 
-  } else {
-    rej({position, delay}) // Reject
-  }
-    })
+    setTimeout(() => {
+      if (shouldResolve) {
+        res({ position, delay }); // Fulfill 
+      } else {
+        rej({ position, delay }) // Reject
+      }
+    }, delay);
 
-    }, delay)
+  });
     // console.log(promise);
   return promise;
 };
